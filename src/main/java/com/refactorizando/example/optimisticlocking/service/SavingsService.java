@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
@@ -13,7 +14,7 @@ public class SavingsService {
 
   private final UserRepository userRepository;
 
-  @Transactional()
+  @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void updateSavings(UUID id, int saving) {
     var user = userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     user.setSavings(user.getSavings() + saving);
