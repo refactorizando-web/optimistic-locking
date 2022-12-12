@@ -4,7 +4,7 @@
 
 This is a simple Spring Boot project to understand how the optimistic locking works with Spring Data.
 
-If you want more information you can take a look in this blog post: https//
+If you want more information you can take a look in this blog post: https://refactorizando.com/optimistic-locking-jpa-spring-data/
 
 ## How does it work?
 
