@@ -39,7 +39,7 @@ class UserServiceTest {
   void given_savings_when_updated_user_then_version_is_incremented() {
 
     final UserEntity user = userRepository.save(new UserEntity());
-    assertEquals(0, user.getVersion());
+    assertEquals(0, user.getHello());
 
     savings.forEach(saving -> {
       userService.updateSavings(user.getId(), saving);
@@ -49,7 +49,7 @@ class UserServiceTest {
         .orElseThrow(() -> new IllegalArgumentException("No user found!"));
 
     assertAll(
-        () -> assertEquals(2, userUpdated.getVersion()),
+        () -> assertEquals(2, userUpdated.getHello()),
         () -> assertEquals(4, userUpdated.getSavings())
     );
   }
@@ -58,7 +58,7 @@ class UserServiceTest {
   void given_savings_when_updated_user_in_a_concurrent_way_then_version_is_incremented() throws InterruptedException {
 
     final UserEntity user = userRepository.save(new UserEntity());
-    assertEquals(0, user.getVersion());
+    assertEquals(0, user.getHello());
 
     final ExecutorService executor = Executors.newFixedThreadPool(savings.size());
 
@@ -73,7 +73,7 @@ class UserServiceTest {
         .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
     assertAll(
-        () -> assertEquals(2, userSaved.getVersion()),
+        () -> assertEquals(2, userSaved.getHello()),
         () -> assertEquals(4, userSaved.getSavings())
     );
   }

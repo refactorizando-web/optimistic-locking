@@ -20,5 +20,5 @@ public class UserEntity {
   private Integer savings = 0;
 
   @Version
-  private Long version;
+  private Long hello;
 }

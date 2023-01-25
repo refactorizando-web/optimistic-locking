@@ -1,4 +1,4 @@
-package com.refactorizando.example.optimisticlocking;
+package com.refactorizando.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
